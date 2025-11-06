@@ -1,0 +1,15 @@
+{
+    "name": "Playlist Collaborator",
+    "short_name": "App",
+    "description": "Collaborate with friends on your Music Streaming!",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#F1EBFF",
+    "icons": [
+        {
+            "src": "images/logo.png",
+            "sizes": "616x616",
+            "purpose":"any"
+        }        
+    ]
+}
