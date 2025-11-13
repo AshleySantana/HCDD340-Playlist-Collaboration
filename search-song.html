@@ -7,6 +7,24 @@
         <link rel="manifest" href="/manifest.json">
     </head>
     <body>
+
+        <header class="navbar">
+            <div class="nav-left">
+              <a href="#" class="logo">MySite</a>
+            </div>
+          
+            <div class="nav-center">
+              <input type="text" placeholder="Search…" class="search-bar">
+            </div>
+          
+            <div class="nav-right">
+              <button id="homeBtn" onclick="toHome()">Home button</button>
+              <button id="searchBtn" onclick="toSearchPage()">Search Button</button>
+              <button id="viewPlaylistsBtn">Playlists</button>
+              <button id="createPlaylistsBtn">Add songs to Playlist</button>
+            </div>
+          </header>
+
         <h1>Search a Song</h1>
         <label>Search a Song</label>
         <input type="text" id="SearchSong"></input>
@@ -34,12 +52,7 @@
             </table>
         </section>
         <br></br>
-        <section id="homeBar">
-            <button id="homeBtn" onclick="toHome()">Home button</button>
-            <button id="searchBtn" onclick="toSearchPage()">Search Button</button>
-            <button id="viewPlaylistsBtn">Playlists</button>
-            <button id="createPlaylistsBtn">Add songs to Playlist</button>
-        </section>
+        
 
         
         <script src="script.js"></script>
