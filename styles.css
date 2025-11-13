@@ -1,0 +1,76 @@
+
+:root{
+    --dark-purple: #1d0b15;
+    --violet-purple: #1a1f74;
+    --white: #ffffff;
+    --light-purple: #f1ebff;
+    --mid-grey: #cccccc;
+    --dark-grey: #333333;
+    --muted: #8a8a8a;
+    --transition: 0.28s ease;
+    background-color: var(--light-purple);
+}
+
+/* Navbar container */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    background-color: var(--dark-purple); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
+    z-index: 1000;
+  }
+  
+  /* Left Logo */
+  .nav-left .logo {
+    color: var(--light-purple);
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  /* Center Search Bar */
+  .nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-bar {
+    width: 60%;
+    max-width: 400px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #333;
+    padding: 0 10px;
+    color: white;
+  }
+  
+  .search-bar::placeholder {
+    color: #b0b0b0;
+  }
+  
+  /* Right Links */
+  .nav-right a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .nav-right a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Push rest of page down so it's not hidden behind nav */
+  body {
+    margin-top: 5.5em;
+  }
+  
