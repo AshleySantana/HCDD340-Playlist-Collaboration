@@ -5,8 +5,9 @@ const person = {
     isStudent: false
   };
 
-  const person = {
+const person = {
     name: "Alice",
     age: 25,
     isStudent: false
   };
+  
