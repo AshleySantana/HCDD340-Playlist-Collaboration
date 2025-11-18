@@ -14,8 +14,12 @@ function toHome(){
 
 
 
-// Function to populate songs into the Song Selection table
-function populateSongs() {
+// Function to handle search and display similar songs
+function searchSongs() {
+    const searchInput = document.getElementById("SearchSong").value.toLowerCase();
+    const resultsSection = document.getElementById("searchResults");
+    resultsSection.innerHTML = ""; // Clear previous results
+
     const songsData = [
         {
             name: "Radiohead",
@@ -91,31 +95,19 @@ function populateSongs() {
         }
     ];
 
-    const table = document.getElementById("songSelectionTable");
-
     songsData.forEach(artist => {
         artist.albums.forEach(album => {
             album.songs.forEach(song => {
-                const row = document.createElement("tr");
-
-                const songCell = document.createElement("td");
-                songCell.textContent = `${song.title} (${song.length})`;
-
-                const previewButton = document.createElement("button");
-                previewButton.textContent = "Preview Song";
-
-                const optionsButton = document.createElement("button");
-                optionsButton.textContent = "Options";
-
-                row.appendChild(songCell);
-                row.appendChild(previewButton);
-                row.appendChild(optionsButton);
-
-                table.appendChild(row);
+                if (song.title.toLowerCase().includes(searchInput)) {
+                    const resultDiv = document.createElement("div");
+                    resultDiv.textContent = `${song.title} (${song.length}) - ${artist.name}`;
+                    resultsSection.appendChild(resultDiv);
+                }
             });
         });
     });
 }
 
-// Call the function to populate songs when the page loads
-window.onload = populateSongs;
+// Add event listener to search input
+const searchInputField = document.getElementById("SearchSong");
+searchInputField.addEventListener("input", searchSongs);
