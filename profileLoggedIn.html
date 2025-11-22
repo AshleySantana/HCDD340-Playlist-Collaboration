@@ -25,15 +25,52 @@
             </div>
           </header>
 
-        <h1 style ="text-align: center;">Profile</h1>
-        <img src = "images/blankPFPimage200x200.jpg" alt="Profile Picture" style="display: block; margin-left: auto; margin-right: auto; width: 200px; height: 200px; border-radius: 50%;">
+        <div class="profile-container">
+            <h1>Profile</h1>
+            
+            <div class="profile-picture-wrapper">
+                <img src="images/blankPFPimage200x200.jpg" alt="Profile Picture" class="profile-picture">
+                <div class="status-indicator online" id="statusIndicator"></div>
+            </div>
+            
+            <div class="status-dropdown-container">
+                <button class="status-dropdown-btn" id="statusDropdownBtn">
+                    <span class="status-dot online" id="statusDot"></span>
+                    <span id="statusText">Online</span>
+                    <span class="dropdown-arrow">▼</span>
+                </button>
+                <div class="status-dropdown-menu" id="statusDropdownMenu">
+                    <div class="status-option" data-status="online">
+                        <span class="status-dot online"></span>
+                        <span>Online</span>
+                    </div>
+                    <div class="status-option" data-status="away">
+                        <span class="status-dot away"></span>
+                        <span>Away</span>
+                    </div>
+                    <div class="status-option" data-status="busy">
+                        <span class="status-dot busy"></span>
+                        <span>Busy / DND</span>
+                    </div>
+                    <div class="status-option" data-status="offline">
+                        <span class="status-dot offline"></span>
+                        <span>Offline</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-        </p1>
-        <br>
         <div class="wrapper">
-            <p>Followers: </p>
-            <p>Following: </p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Following</span>
+                </div>
+            </div>
 
             <div id="recentSongs">
 
