@@ -129,8 +129,10 @@
 }
 
 .playlist-cover {
-  width: 150px;
-  height: 150px;   
+  width: 50%;
+  height: 50%;   
+  max-width: 300px;
+  max-height: 300px;
   background-size: cover;
   border: none;
   border-radius: 5px;
@@ -141,15 +143,19 @@
 }
 
 .playlist-header {
-  display: grid;
-  text-align: center;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  font-size: 95%;
+}
+
+.playlist-cover {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .playlist-header h2 {
   margin-top: 10px;
-}
-
-.playlist-header img{
-  justify-self: center;
-  margin-bottom: 0;
+  text-align: center;
 }
