@@ -127,3 +127,29 @@
 .playlist-button:hover {
   transform: scale(1.05);
 }
+
+.playlist-cover {
+  width: 150px;
+  height: 150px;   
+  background-size: cover;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.playlist-header {
+  display: grid;
+  text-align: center;
+}
+
+.playlist-header h2 {
+  margin-top: 10px;
+}
+
+.playlist-header img{
+  justify-self: center;
+  margin-bottom: 0;
+}
