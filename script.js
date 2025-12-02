@@ -5,7 +5,7 @@ function toSearchPage(){
 }
 
 function toPlaylists(){
-
+    window.location.href = "playlists.html"
 }
 
 function toHome(){
