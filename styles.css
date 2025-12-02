@@ -104,17 +104,17 @@
 
 /* Playlist selection */
 .playlist-selection {
-  display: flex;
   justify-content: space-around;
-  margin: 20px;
+  margin: 30px;
 }
 
 /* Playlist button */
 .playlist-button {
-  width: 200px;
-  height: 100px;   
+  width: 150px;
+  height: 150px;   
   background-size: cover;
   border: none;
+  border-radius: 5px;
   color: white;
   font-size: 18px;
   cursor: pointer;
