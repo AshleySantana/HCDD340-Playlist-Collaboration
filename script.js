@@ -111,3 +111,4 @@ function searchSongs() {
 // Add event listener to search input
 const searchInputField = document.getElementById("SearchSong");
 searchInputField.addEventListener("input", searchSongs);
+// Profile status is handled by `status.js` (ProfileStatus.get/set/init)
