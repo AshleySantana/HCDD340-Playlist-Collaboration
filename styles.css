@@ -106,6 +106,8 @@
 .playlist-selection {
   justify-content: space-around;
   margin: 30px;
+  max-height: 75%;
+  max-width: 75%;
 }
 
 /* Playlist button */
