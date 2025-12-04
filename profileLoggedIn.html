@@ -5,6 +5,13 @@
         <title>Simple HTML page.</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="manifest" href="/manifest.json">
+        <style>
+            .my-playlists-wrapper{ max-width:900px; margin:0 auto; padding:12px; display:flex; align-items:stretch; gap:12px; }
+            .playlists-container{ display:flex; gap:12px; overflow-x:hidden; flex:1; }
+            .playlist-square{ width:120px; height:120px; background:#ffffff; border:2px solid var(--mid-grey); border-radius:8px; flex-shrink:0; cursor:pointer; }
+            .scroll-btn{ background:var(--dark-purple); color:var(--white); border:none; padding:0 16px; border-radius:6px; cursor:pointer; font-size:20px; }
+            .scroll-btn:hover{ opacity:0.8; }
+        </style>
     </head>
     <body>
         
@@ -52,13 +59,30 @@
           </div>
         </section>
 
-        <div class="wrapper">
-          <div id="recentSongs"></div>
-          <div id ="songResults"></div>
+        <div style="max-width:900px; margin:24px auto;">
+          <button onclick="window.location.href='playlists.html'" style="background:none; border:none; cursor:pointer; padding:0; margin:0 0 12px 0;"><h2 style="margin:0; color:var(--dark-grey); text-align:left;">My Playlists</h2></button>
+          <div class="my-playlists-wrapper">
+            <button class="scroll-btn" id="scrollLeft" onclick="scrollPlaylists(-1)">←</button>
+            <div class="playlists-container" id="playlistsContainer">
+              <div class="playlist-square"></div>
+              <div class="playlist-square"></div>
+              <div class="playlist-square"></div>
+              <div class="playlist-square"></div>
+              <div class="playlist-square"></div>
+              <div class="playlist-square"></div>
+            </div>
+            <button class="scroll-btn" id="scrollRight" onclick="scrollPlaylists(1)">→</button>
+          </div>
         </div>
-
 
         <script src="status.js"></script>
         <script src="script.js"></script>
+        <script>
+            function scrollPlaylists(direction) {
+                const container = document.getElementById('playlistsContainer');
+                const scrollAmount = 140; // 120px square + 12px gap + 8px buffer
+                container.scrollLeft += direction * scrollAmount;
+            }
+        </script>
     </body>
 </html>
