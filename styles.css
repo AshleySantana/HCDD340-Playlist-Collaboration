@@ -101,7 +101,35 @@
     color: var(--white);
     cursor: pointer;
 }
-/* Profile styles moved to `profile.css` to avoid modifying global stylesheet */
+
+/* Playlist selection */
+.playlist-selection {
+  justify-content: space-around;
+  margin: 30px;
+  max-height: 75%;
+  max-width: 75%;
+}
+
+/* Playlist button */
+.playlist-button {
+  width: 150px;
+  height: 150px;   
+  background-size: cover;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+/* Playlist button hover */
+.playlist-button:hover {
+  transform: scale(1.05);
+}
+
+
+/* Henry: Styles for profile card/status*/
 .wrapper{ max-width:900px; margin: 12px auto; padding: 12px; }
 
 /* Namespaced profile styles (prefix with .hcd-profile-card to reduce conflicts) */
@@ -112,7 +140,7 @@
   align-items: center;
   gap: 20px;
   padding: 18px;
-  background: linear-gradient(180deg, #faf7ff 0%, #f3eefb 100%);
+  background: linear-gradient(180deg, #faf7ff 0%, #f3eefb 100%); /*FYI: use ts to change background of card :) */
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
@@ -124,6 +152,26 @@
   border-radius: 12px;
   border: 3px solid #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: filter var(--transition);
+}
+.hcd-profile-card .profile-avatar:hover img{
+  filter: brightness(0.4);
+}
+.pic-edit-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  text-align: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+.hcd-profile-card .profile-avatar:hover .pic-edit-text{
+  opacity: 1;
 }
 .hcd-profile-card .status-indicator{
   position: absolute;
