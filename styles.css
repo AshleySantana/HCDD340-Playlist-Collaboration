@@ -1,3 +1,4 @@
+
 :root{
     --dark-purple: #1d0b15;
     --violet-purple: #1a1f74;
@@ -72,48 +73,12 @@
   body {
     margin-top: 5.5em;
   }
-
-/* Styles for search results */
-#searchResults {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: var(--light-purple);
-    border: 1px solid var(--mid-grey);
-    border-radius: 8px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#searchResults div {
-    padding: 8px;
-    border-bottom: 1px solid var(--mid-grey);
-    font-size: 16px;
-    color: var(--dark-grey);
-}
-
-#searchResults div:last-child {
-    border-bottom: none;
-}
-
-#searchResults div:hover {
-    background-color: var(--mid-grey);
-    color: var(--white);
-    cursor: pointer;
-}
-
-/* Playlist selection */
-.playlist-selection {
-  justify-content: space-around;
-  margin: 30px;
-  max-height: 75%;
-  max-width: 75%;
-}
-
-/* Playlist button */
-.playlist-button {
-  width: 150px;
-  height: 150px;   
+  
+.playlist-cover {
+  width: 50%;
+  height: 50%;   
+  max-width: 300px;
+  max-height: 300px;
   background-size: cover;
   border: none;
   border-radius: 5px;
@@ -123,11 +88,67 @@
   transition: transform 0.3s;
 }
 
-/* Playlist button hover */
-.playlist-button:hover {
-  transform: scale(1.05);
+.playlist-header {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  font-size: 95%;
 }
 
+.playlist-cover {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.playlist-header h2 {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.songs-list {
+  display: flex; 
+  flex-direction: column;
+  flex-wrap: nowrap; 
+  overflow-x: auto;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 75%;
+}
+  
+
+.song-card {
+  background-color: #dfd3f8;
+  border-radius: 5px;
+  margin: 3px;
+  padding: 10px;
+}
+
+.song-card-inner {
+  display: flex ;
+  align-items: center;
+}
+
+
+.song-title {
+  margin-right: 20px;
+}
+
+.song-card-right {
+    /* Pushes this entire container to the far right */
+    margin-left: auto; 
+    /* Makes the right content flex as well, aligning info and actions */
+    display: flex;
+    align-items: center;
+}
+
+.song-album {
+  margin: 10px;
+}
+
+.song-artist {
+  margin: 10px;
+}
 
 
 
