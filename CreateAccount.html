@@ -16,13 +16,7 @@
             .form-row .form-control{ flex:1 }
             .submit-btn{ background:var(--violet-purple); color:var(--white); padding:8px 12px; border-radius:8px; border:none; font-weight:700; cursor:pointer }
             .small-note{ font-size:0.85rem; color:var(--muted); }
-            /* My Playlists section */
-            .my-playlists-container{ width:calc(100% - 48px); margin:12px 24px; }
-            .my-playlists-container h2{ margin:12px 0 8px 0; font-size:1.2rem; color:var(--dark-grey); }
-            .playlists-grid{ display:flex; gap:12px; flex-wrap:wrap; }
-            .playlist-square{ width:120px; height:120px; background:#e8dff5; border-radius:8px; border:1px solid var(--mid-grey); cursor:pointer; transition:transform 0.2s; }
-            .playlist-square:hover{ transform:scale(1.05); }
-            @media (max-width:800px){ .create-account-card{ width:calc(100% - 32px); margin:10px 16px; } .my-playlists-container{ width:calc(100% - 32px); margin:10px 16px; } }
+            @media (max-width:800px){ .create-account-card{ width:calc(100% - 32px); margin:10px 16px; } }
             @media (max-width:520px){ .create-account-card{ margin:12px; } .form-row{ flex-direction:column } }
         </style>
     </head>
@@ -84,16 +78,6 @@
                     <button type="submit" class="submit-btn">Create account</button>
                 </div>
             </form>
-        </section>
-
-        <section class="my-playlists-container">
-            <h2>My Playlists</h2>
-            <div class="playlists-grid">
-                <div class="playlist-square"></div>
-                <div class="playlist-square"></div>
-                <div class="playlist-square"></div>
-                <div class="playlist-square"></div>
-            </div>
         </section>
 
         <script src="status.js"></script>
