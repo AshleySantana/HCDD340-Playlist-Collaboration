@@ -13,7 +13,7 @@ function toHome(){
 }
 
 // List of songs 
-const songsList = [
+const albumsList = [
     {
         title: "The King of Limbs",
         artist: "Radiohead",
@@ -87,8 +87,9 @@ const songsList = [
 ];
 
 // HOME PAGE CODE:
-// sample usage: songsData.forEach(p => { ... })
-songsList.forEach(p => {
+
+// this is for the results section
+albumsList.forEach(p => {
   const item = document.createElement("div");
   item.className = "card";
   item.tabIndex = 0;                     // makes it keyboard-focusable
@@ -120,7 +121,9 @@ songsList.forEach(p => {
   });
 
   recentSongs.appendChild(item);
+
 });
+// this is for the activity section
 
 
 
