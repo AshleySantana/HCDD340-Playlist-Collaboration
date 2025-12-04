@@ -105,3 +105,21 @@
   margin-top: 10px;
   text-align: center;
 }
+
+.song-card {
+  background-color: #ccbfe9;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+.song-card-inner {
+  display: flex;
+}
+
+.song-card-info {
+  display: flex;
+}
+
+.song-card-actions {
+  float: right;
+}

@@ -47,15 +47,13 @@
                     card.className = 'song-card';
                     card.innerHTML = `
                       <div class="song-card-inner">
-                        <div class="song-card-img">
-                          <img src="./images/placeholder.png" alt="Song cover" />
-                        </div>
+                        
                         <div class="song-card-info">
                           <div class="song-title">${song.title}</div>
                           <div class="song-artist">${artist.name}</div>
                           <div class="song-album">${album.title}</div>
-                          <div class="song-length">${song.length}</div>
                         </div>
+
                         <div class="song-card-actions">
                           <button class="play-btn" title="Play"><span>&#9654;</span></button>
                           <button class="options-btn" title="More options"><span>&#8942;</span></button>
