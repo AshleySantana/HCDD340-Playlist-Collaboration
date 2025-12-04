@@ -5,102 +5,151 @@ function toSearchPage(){
 }
 
 function toPlaylists(){
-
+    window.location.href = "playlists.html"
 }
 
 function toHome(){
     window.location.href = "home.html"
 }
 
+// List of songs 
+const songsList = [
+    {
+        title: "The King of Limbs",
+        artist: "Radiohead",
+        image: "images/king_of_limbs.jpg",
+        songs: [
+            { title: "Bloom", length: "5:15" },
+            { title: "Morning Mr Magpie", length: "4:41" },
+            { title: "Little by Little", length: "4:27" },
+            { title: "Feral", length: "3:13" },
+            { title: "Lotus Flower", length: "5:01" },
+            { title: "Codex", length: "4:47" },
+            { title: "Give Up the Ghost", length: "4:50" },
+            { title: "Separator", length: "5:20" }
+        ]
+    },
+    {
+        title: "OK Computer",
+        artist: "Radiohead",
+        image: "images/ok_computer.jpg",
+        songs: [
+            { title: "Airbag", length: "4:44" },
+            { title: "Paranoid Android", length: "6:23" },
+            { title: "Subterranean Homesick Alien", length: "4:27" },
+            { title: "Exit Music (For a Film)", length: "4:24" },
+            { title: "Let Down", length: "4:59" },
+            { title: "Karma Police", length: "4:21" },
+            { title: "Fitter Happier", length: "1:57" },
+            { title: "Electioneering", length: "3:50" },
+            { title: "Climbing Up the Walls", length: "4:45" },
+            { title: "No Surprises", length: "3:48" },
+            { title: "Lucky", length: "4:19" },
+            { title: "The Tourist", length: "5:24" }
+        ]
+    },
+    {
+        title: "Dummy",
+        artist: "Portishead",
+        image: "images/dummy.png",
+        songs: [
+            { title: "Mysterons", length: "5:02" },
+            { title: "Sour Times", length: "4:11" },
+            { title: "Strangers", length: "3:55" },
+            { title: "It Could Be Sweet", length: "4:16" },
+            { title: "Wandering Star", length: "4:51" },
+            { title: "It's a Fire", length: "3:49" },
+            { title: "Numb", length: "3:54" },
+            { title: "Roads", length: "5:02" },
+            { title: "Pedestal", length: "3:39" },
+            { title: "Biscuit", length: "5:01" },
+            { title: "Glory Box", length: "5:06" }
+        ]
+    },
+    {
+        title: "Third",
+        artist: "Portishead",
+        image: "images/third.jpg",
+        songs: [
+            { title: "Silence", length: "4:58" },
+            { title: "Hunter", length: "3:57" },
+            { title: "Nylon Smile", length: "3:16" },
+            { title: "The Rip", length: "4:29" },
+            { title: "Plastic", length: "3:27" },
+            { title: "We Carry On", length: "6:27" },
+            { title: "Deep Water", length: "1:31" },
+            { title: "Machine Gun", length: "4:43" },
+            { title: "Small", length: "6:45" },
+            { title: "Magic Doors", length: "3:32" },
+            { title: "Threads", length: "5:45" }
+        ]
+    }
+];
+
+// HOME PAGE CODE:
+// sample usage: songsData.forEach(p => { ... })
+// Render recent / featured cards only when the container exists on the page
+const recentSongs = document.getElementById("recentSongs");
+if (recentSongs) {
+    songsList.forEach(p => {
+        const item = document.createElement("div");
+        item.className = "card";
+        item.tabIndex = 0;                     // makes it keyboard-focusable
+        item.setAttribute("role", "button");   // semantic for assistive tech
+        item.setAttribute("aria-pressed", "false");
+
+        // Use background-image for a cleaner square cover, but if you prefer <img> you can swap.
+        item.innerHTML = `
+            <div class="cover" style="background-image: url('${p.image || ''}');">
+                ${!p.image ? '<img src="fallback.jpg" alt="cover">' : ''}
+            </div>
+            <div class="meta">
+                <p class="title">${p.title}</p>
+                <p class="artist">${p.artist}</p>
+            </div>
+        `;
+
+        // toggle selected on click
+        item.addEventListener("click", () => {
+            const isSelected = item.classList.toggle("selected");
+            item.setAttribute("aria-pressed", String(isSelected));
+        });
+
+        // keyboard support: Space or Enter toggles selection
+        item.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                item.click();
+            }
+        });
+
+        recentSongs.appendChild(item);
+    });
+}
+
 
 
 // Function to handle search and display similar songs
+// We'll load the real data from `exampleSongs.json` and reuse it for searches
+let songsDataLoaded = [];
+
 function searchSongs() {
-    const searchInput = document.getElementById("SearchSong").value.toLowerCase();
+    const inputEl = document.getElementById("SearchSong");
     const resultsSection = document.getElementById("searchResults");
+    if (!inputEl || !resultsSection) return;
+
+    const searchInput = inputEl.value.toLowerCase().trim();
     resultsSection.innerHTML = ""; // Clear previous results
 
-    const songsData = [
-        {
-            name: "Radiohead",
-            albums: [
-                {
-                    title: "The King of Limbs",
-                    songs: [
-                        { title: "Bloom", length: "5:15" },
-                        { title: "Morning Mr Magpie", length: "4:41" },
-                        { title: "Little by Little", length: "4:27" },
-                        { title: "Feral", length: "3:13" },
-                        { title: "Lotus Flower", length: "5:01" },
-                        { title: "Codex", length: "4:47" },
-                        { title: "Give Up the Ghost", length: "4:50" },
-                        { title: "Separator", length: "5:20" }
-                    ]
-                },
-                {
-                    title: "OK Computer",
-                    songs: [
-                        { title: "Airbag", length: "4:44" },
-                        { title: "Paranoid Android", length: "6:23" },
-                        { title: "Subterranean Homesick Alien", length: "4:27" },
-                        { title: "Exit Music (For a Film)", length: "4:24" },
-                        { title: "Let Down", length: "4:59" },
-                        { title: "Karma Police", length: "4:21" },
-                        { title: "Fitter Happier", length: "1:57" },
-                        { title: "Electioneering", length: "3:50" },
-                        { title: "Climbing Up the Walls", length: "4:45" },
-                        { title: "No Surprises", length: "3:48" },
-                        { title: "Lucky", length: "4:19" },
-                        { title: "The Tourist", length: "5:24" }
-                    ]
-                }
-            ]
-        },
-        {
-            name: "Portishead",
-            albums: [
-                {
-                    title: "Dummy",
-                    songs: [
-                        { title: "Mysterons", length: "5:02" },
-                        { title: "Sour Times", length: "4:11" },
-                        { title: "Strangers", length: "3:55" },
-                        { title: "It Could Be Sweet", length: "4:16" },
-                        { title: "Wandering Star", length: "4:51" },
-                        { title: "It's a Fire", length: "3:49" },
-                        { title: "Numb", length: "3:54" },
-                        { title: "Roads", length: "5:02" },
-                        { title: "Pedestal", length: "3:39" },
-                        { title: "Biscuit", length: "5:01" },
-                        { title: "Glory Box", length: "5:06" }
-                    ]
-                },
-                {
-                    title: "Third",
-                    songs: [
-                        { title: "Silence", length: "4:58" },
-                        { title: "Hunter", length: "3:57" },
-                        { title: "Nylon Smile", length: "3:16" },
-                        { title: "The Rip", length: "4:29" },
-                        { title: "Plastic", length: "3:27" },
-                        { title: "We Carry On", length: "6:27" },
-                        { title: "Deep Water", length: "1:31" },
-                        { title: "Machine Gun", length: "4:43" },
-                        { title: "Small", length: "6:45" },
-                        { title: "Magic Doors", length: "3:32" },
-                        { title: "Threads", length: "5:45" }
-                    ]
-                }
-            ]
-        }
-    ];
+    if (!searchInput) return; // don't show results when input is empty
 
-    songsData.forEach(artist => {
+    // songsDataLoaded follows the same structure as exampleSongs.json
+    songsDataLoaded.forEach(artist => {
         artist.albums.forEach(album => {
             album.songs.forEach(song => {
                 if (song.title.toLowerCase().includes(searchInput)) {
                     const resultDiv = document.createElement("div");
-                    resultDiv.textContent = `${song.title} (${song.length}) - ${artist.name}`;
+                    resultDiv.className = 'search-result';
+                    resultDiv.textContent = `${song.title} (${song.length}) — ${artist.name} • ${album.title}`;
                     resultsSection.appendChild(resultDiv);
                 }
             });
@@ -108,7 +157,18 @@ function searchSongs() {
     });
 }
 
-// Add event listener to search input
-const searchInputField = document.getElementById("SearchSong");
-searchInputField.addEventListener("input", searchSongs);
-// Profile status is handled by `status.js` (ProfileStatus.get/set/init)
+// Wire up live-search and load the JSON data after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInputField = document.getElementById("SearchSong");
+    if (searchInputField) {
+        searchInputField.addEventListener("input", searchSongs);
+    }
+
+    // Load the songs JSON used for searching
+    fetch('exampleSongs.json')
+        .then(res => res.json())
+        .then(data => {
+            songsDataLoaded = data;
+        })
+        .catch(err => console.error('Failed to load exampleSongs.json', err));
+});
