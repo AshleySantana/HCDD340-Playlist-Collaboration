@@ -88,43 +88,47 @@ const albumsList = [
 
 // HOME PAGE CODE:
 
-// this is for the results section
-albumsList.forEach(p => {
-  const item = document.createElement("div");
-  item.className = "card";
-  item.tabIndex = 0;                     // makes it keyboard-focusable
-  item.setAttribute("role", "button");   // semantic for assistive tech
-  item.setAttribute("aria-pressed", "false");
-
-  // Use background-image for a cleaner square cover, but if you prefer <img> you can swap.
-  item.innerHTML = `
-    <div class="cover" style="background-image: url('${p.image || ''}');">
-      ${!p.image ? '<img src="fallback.jpg" alt="cover">' : ''}
-    </div>
-    <div class="meta">
-      <p class="title">${p.title}</p>
-      <p class="artist">${p.artist}</p>
-    </div>
-  `;
-
-  // toggle selected on click
-  item.addEventListener("click", () => {
-    const isSelected = item.classList.toggle("selected");
-    item.setAttribute("aria-pressed", String(isSelected));
-  });
-
-  // keyboard support: Space or Enter toggles selection
-  item.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      item.click();
-    }
-  });
-
-  recentSongs.appendChild(item);
-
-});
-// this is for the activity section
-
-
-
 // Function to handle search and display similar songs
+// We'll load the real data from `exampleSongs.json` and reuse it for searches
+let songsDataLoaded = [];
+
+function searchSongs() {
+    const inputEl = document.getElementById("SearchSong");
+    const resultsSection = document.getElementById("searchResults");
+    if (!inputEl || !resultsSection) return;
+
+    const searchInput = inputEl.value.toLowerCase().trim();
+    resultsSection.innerHTML = ""; // Clear previous results
+
+    if (!searchInput) return; // don't show results when input is empty
+
+    // songsDataLoaded follows the same structure as exampleSongs.json
+    songsDataLoaded.forEach(artist => {
+        artist.albums.forEach(album => {
+            album.songs.forEach(song => {
+                if (song.title.toLowerCase().includes(searchInput)) {
+                    const resultDiv = document.createElement("div");
+                    resultDiv.className = 'search-result';
+                    resultDiv.textContent = `${song.title} (${song.length}) — ${artist.name} • ${album.title}`;
+                    resultsSection.appendChild(resultDiv);
+                }
+            });
+        });
+    });
+}
+
+// Wire up live-search and load the JSON data after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInputField = document.getElementById("SearchSong");
+    if (searchInputField) {
+        searchInputField.addEventListener("input", searchSongs);
+    }
+
+    // Load the songs JSON used for searching
+    fetch('exampleSongs.json')
+        .then(res => res.json())
+        .then(data => {
+            songsDataLoaded = data;
+        })
+        .catch(err => console.error('Failed to load exampleSongs.json', err));
+});
