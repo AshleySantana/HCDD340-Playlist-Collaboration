@@ -10,7 +10,7 @@
     background-color: var(--light-purple);
 }
 
-/* Navbar container */
+/* NAVBAR container */
 .navbar {
     position: fixed;
     top: 0;
@@ -72,6 +72,92 @@
   body {
     margin-top: 5.5em;
   }
+
+/*HOME PAGE STYLING*/
+/* Grid for your cards */
+#recentSongs{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+/* Square Card */
+.card {
+  width: 220px;
+  aspect-ratio: 1 / 1;
+  background: var(--white);
+  border: 2px solid var(--mid-grey);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+/* Album cover */
+.card .cover{
+  flex: 0 0 62%;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Text area */
+.card .meta{
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+}
+
+.card .title{
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--dark-purple);
+}
+
+.card .artist{
+  margin: 4px 0 0 0;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+/* Hover */
+.card:hover{
+  background: var(--light-purple);
+  border-color: var(--violet-purple);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.15);
+}
+
+/* Selected State */
+.card.selected{
+  background: var(--violet-purple);
+  color: var(--white);
+  border-color: var(--dark-purple);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.22);
+}
+
+/* Selected: text switches to white */
+.card.selected .title,
+.card.selected .artist{
+  color: var(--white);
+}
+
+/* Keyboard focus */
+.card:focus-visible{
+  outline: 3px solid var(--violet-purple);
+  transform: translateY(-4px);
+}
+
+/* Responsive */
+@media (max-width: 480px){
+  .card{
+    width: 150px;
+  }
+}
 
 /* Styles for search results */
 #searchResults {
