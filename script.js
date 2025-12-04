@@ -12,9 +12,6 @@ function toHome(){
     window.location.href = "home.html"
 }
 
-function toExamplePlaylist(){
-    window.location.href = "kpop_playlist.html"
-}
 // List of songs 
 const songsList = [
     {
