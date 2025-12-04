@@ -13,7 +13,7 @@ function toHome(){
 }
 
 // List of songs 
-const songsList = [
+const albumsList = [
     {
         title: "The King of Limbs",
         artist: "Radiohead",
@@ -87,46 +87,6 @@ const songsList = [
 ];
 
 // HOME PAGE CODE:
-// sample usage: songsData.forEach(p => { ... })
-// Render recent / featured cards only when the container exists on the page
-const recentSongs = document.getElementById("recentSongs");
-if (recentSongs) {
-    songsList.forEach(p => {
-        const item = document.createElement("div");
-        item.className = "card";
-        item.tabIndex = 0;                     // makes it keyboard-focusable
-        item.setAttribute("role", "button");   // semantic for assistive tech
-        item.setAttribute("aria-pressed", "false");
-
-        // Use background-image for a cleaner square cover, but if you prefer <img> you can swap.
-        item.innerHTML = `
-            <div class="cover" style="background-image: url('${p.image || ''}');">
-                ${!p.image ? '<img src="fallback.jpg" alt="cover">' : ''}
-            </div>
-            <div class="meta">
-                <p class="title">${p.title}</p>
-                <p class="artist">${p.artist}</p>
-            </div>
-        `;
-
-        // toggle selected on click
-        item.addEventListener("click", () => {
-            const isSelected = item.classList.toggle("selected");
-            item.setAttribute("aria-pressed", String(isSelected));
-        });
-
-        // keyboard support: Space or Enter toggles selection
-        item.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" || e.key === " ") {
-                item.click();
-            }
-        });
-
-        recentSongs.appendChild(item);
-    });
-}
-
-
 
 // Function to handle search and display similar songs
 // We'll load the real data from `exampleSongs.json` and reuse it for searches

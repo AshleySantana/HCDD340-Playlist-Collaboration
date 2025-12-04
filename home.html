@@ -10,19 +10,19 @@
 
         <header class="navbar">
             <div class="nav-left">
-              <a href="#" class="logo">MySite</a>
-            </div>
-          
-            <div class="nav-center">
-              <input type="text" placeholder="Search…" class="search-bar">
+              <a href="#" class="logo">PlayList Collaborator</a>
             </div>
           
             <div class="nav-right">
-              <button id="homeBtn" onclick="toHome()">Home button</button>
-              <button id="searchBtn" onclick="toSearchPage()">Search Button</button>
+              <button id="homeBtn" onclick="toHome()">Home</button>
+              <button id="searchBtn" onclick="toSearchPage()">Search</button>
               <button id="viewPlaylistsBtn">Playlists</button>
               <button id="createPlaylistsBtn">Add songs to Playlist</button>
             </div>
+        </header>
+          
+        <br>
+        <h1>Welcome Jo!</h1>
           </header>
         
 
@@ -32,14 +32,22 @@
         <input type="text" id="SearchSong" placeholder="Search Song"></input>
         <br>
         <div class="wrapper">
-            <p>Recents</p>
-            <p>Results</p>
-            <div id="recentSongs">
 
-            </div>
-            <div id ="songResults">
+          <div id="recentsWrapper">
+            <h2>Recent playlists</h2>
+            <div id="recentSongs"></div>
+          </div>
+          <br>
 
+          <div id="activityWrapper">
+            <h2>Activity</h2>
+            <div id="activityFeed">
+              <p>Eden invited you to: House party playlist</p>
+              <p>Henry joined: House party playlist</p>
+              <p>Ashley added songs: Creep by Radiohead</p>
+              <p>Ashley voted on: Golden by KPOP Demon Hunters</p>
             </div>
+          </div>
         </div>
 
 
