@@ -106,20 +106,38 @@
   text-align: center;
 }
 
+.songs-list {
+  display: flex; 
+  flex-direction: column;
+  flex-wrap: nowrap; 
+  overflow-x: auto;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 75%;
+}
+  
+
 .song-card {
-  background-color: #ccbfe9;
+  background-color: #dfd3f8;
   border-radius: 5px;
   margin: 3px;
+  padding: 10px;
 }
 
 .song-card-inner {
-  display: flex;
+  display: flex ;
+  align-items: center;
 }
 
-.song-card-info {
-  display: flex;
+
+.song-title {
+  margin-right: 20px;
 }
 
-.song-card-actions {
-  float: right;
+.song-card-right {
+    /* Pushes this entire container to the far right */
+    margin-left: auto; 
+    /* Makes the right content flex as well, aligning info and actions */
+    display: flex;
+    align-items: center;
 }
