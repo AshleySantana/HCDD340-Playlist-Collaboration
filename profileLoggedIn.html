@@ -27,22 +27,38 @@
 
         <h1 style ="text-align: center;">Profile</h1>
 
+        <section class="profile-card hcd-profile-card">
+          <div class="profile-avatar">
+            <img src="images/blankPFPimage200x200.jpg" alt="Profile picture" id="profilePic">
+            <span class="status-indicator" id="statusIndicator" data-status="online" title="Online"></span>
+            <span class="pic-edit-text">Change Profile Picture</span>
+          </div>
+          <div class="profile-info">
+            <h2 id="profileName">Your Name</h2>
+            <div class="status-row">
+              <span id="statusLabel" class="status-label">Online</span>
+              <label for="statusSelect" class="sr-only">Set status</label>
+              <select id="statusSelect" class="status-select" aria-label="Set status">
+                <option value="online">Online</option>
+                <option value="away">Away</option>
+                <option value="busy">Busy (DND)</option>
+                <option value="offline">Offline</option>
+              </select>
+            </div>
+            <div class="follow-stats">
+              <span>Followers: <strong id="followersCount">0</strong></span>
+              <span>Following: <strong id="followingCount">0</strong></span>
+            </div>
+          </div>
+        </section>
 
-        </p1>
-        <br>
         <div class="wrapper">
-            <p>Followers: </p>
-            <p>Following: </p>
-
-            <div id="recentSongs">
-
-            </div>
-            <div id ="songResults">
-
-            </div>
+          <div id="recentSongs"></div>
+          <div id ="songResults"></div>
         </div>
 
 
+        <script src="status.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
